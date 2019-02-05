@@ -83,7 +83,7 @@ app.use('/cdn', express.static(__dirname + '/cdn') );
 app.use('/', express.static(__dirname + '/wwwroot/', options) );
 
 app.get('/:id', (req, res)=> {
-  res.redirect('/');
+  res.redirect('https://ads.digitalseat.io');
 })
 
 
