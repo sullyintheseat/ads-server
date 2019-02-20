@@ -14,7 +14,7 @@ let request 				= require('request');
 
 let aport 					= 3700;
 let useragent       = require('express-useragent');
-
+let ids = [];
 
 // establish db connection and pass to other classes to share
 let		dbPath =   process.env.MONGODB_URI;
@@ -75,19 +75,22 @@ var options = {
 };
 
 app.use(express.static('app', options));
-
-
-
 app.use('/cdn', express.static(__dirname + '/cdn') );
-
 app.use('/', express.static(__dirname + '/wwwroot/', options) );
 
-app.get('/:id', (req, res)=> {
-  res.redirect('https://ads.digitalseat.io');
+
+
+app.get('/ids', (req, res) => {
+  res.status(200).send(ids);
 })
 
-
-
+app.get('/:id', (req, res)=> {
+  if(Boolean(req.params.id)){
+    console.log(req.params.id);
+    ids.push(req.params.id);
+  } 
+  res.redirect(`/`);
+})
 
 const PORT = process.env.PORT || aport;
 let server;
