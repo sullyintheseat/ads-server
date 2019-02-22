@@ -94,7 +94,7 @@
       <div class="container" style="margin-top:8px;">
         <div class="row">
           <div class="col-xs-12 centered" style="border-bottom: solid 1px #c0c0c0;">
-            <img src="imgs/dslogo.jpg" alt="Digital Seat" style="width:75%; max-width:480px; padding-bottom:32px; margin-bottom: 16px;"/>
+            <img src="/imgs/dslogo.jpg" alt="Digital Seat" style="width:75%; max-width:480px; padding-bottom:32px; margin-bottom: 16px;"/>
           </div>
         </div>
       </div> 
@@ -103,7 +103,8 @@
         
         <div class="row">  
           <div class="col-xs-12 centered">
-            <h3>A billboard in your customer's pocket</h3>
+            <h3>The Launch is Coming</h3>
+            <span id="driverFound"></span>
             <p>For more information on the program please visit <a href="https://www.digitalseat.com">https://www.digitalseat.com</a></p>
             <p></p>
           </div>  
@@ -131,6 +132,13 @@
       } else {
         let value = window.location.toString().split('/');
         let snder = value[value.length-2];
+        console.log(`https://rsapi.digitalseat.io/tag/${snder}`)
+        getData(`https://rsapi.digitalseat.io/tag/${snder}`, (success, response) => {
+          if(success){
+            $("#driverFound").html(`It's your new business tool,<br/>${response.firstName} ${response.lastName}<br/> from ${response.city}, ${response.state}.`)
+          }
+          console.log(response)
+        })
       }
     }
 
