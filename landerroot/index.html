@@ -121,6 +121,7 @@
     let mykey;
 
     init = () => {
+      let vm = this;
       mykey = localStorage.getItem('mykey');
 
       if(Boolean(mykey)) {
@@ -136,9 +137,10 @@
         getData(`https://rsapi.digitalseat.io/tag/${snder}`, (success, response) => {
           if(success){
             $("#driverFound").html(`It's your new business tool,<br/>${response.firstName} ${response.lastName}<br/> from ${response.city}, ${response.state}.`)
+          } else {
+            vm.window.location.href =  '/';
           }
-          console.log(response)
-        })
+        });
       }
     }
 
