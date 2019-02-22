@@ -76,20 +76,25 @@ var options = {
 
 app.use(express.static('app', options));
 app.use('/cdn', express.static(__dirname + '/cdn') );
+app.use('/ad/*', express.static(__dirname + '/landerroot') );
 app.use('/', express.static(__dirname + '/wwwroot/', options) );
-
-
 
 app.get('/ids', (req, res) => {
   res.status(200).send(ids);
 })
 
+
 app.get('/:id', (req, res)=> {
   if(Boolean(req.params.id)){
-    console.log(req.params.id);
-    ids.push(req.params.id);
+    ids.push(req.params.id)
+    console.log(req.useragent)
+    res.header('drv', req.params.id);
   } 
-  res.redirect(`/`);
+  res.redirect(`/ad/${req.params.id}`)
+})
+
+app.get('/', (req, res)=> {
+  res.status(200).send('ok no id');
 })
 
 const PORT = process.env.PORT || aport;
