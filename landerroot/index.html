@@ -9,6 +9,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="/cdn/js/libs//handlebars-v1.3.0.js"></script>
     <script src="/cdn/js/webcalls.js"></script>
+    <script src="/cdn/js/cookies.js"></script>
     <meta http-equiv="X-UA-Compatible" content="IE=edge" /><meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="/cdn/style/custom.css">
     <style>
@@ -118,29 +119,39 @@
   </body>
   <script type="text/javascript">
     $(document).ready(function(e) { init(); });
-    let mykey;
-
+    let mykey, visited, driver;
     init = () => {
       let vm = this;
       mykey = localStorage.getItem('mykey');
+      driver = getCookie('rds');
+      visited = Boolean(driver);
+    
 
       if(Boolean(mykey)) {
-        var req = new XMLHttpRequest();
-        req.open('GET', document.location, false);
-        req.send(null);
-        var headers = req.getAllResponseHeaders().toLowerCase();
+        alert(mykey);
   
       } else {
+        //expect no key
         let value = window.location.toString().split('/');
         let snder = value[value.length-2];
-        console.log(`https://rsapi.digitalseat.io/tag/${snder}`)
+        
         getData(`https://rsapi.digitalseat.io/tag/${snder}`, (success, response) => {
           if(success){
             $("#driverFound").html(`It's your new business tool,<br/>${response.firstName} ${response.lastName}<br/> from ${response.city}, ${response.state}.`)
+            //vm.window.location.href = `/app/${snder}`
           } else {
-            vm.window.location.href =  '/';
+           // vm.window.location.href =  '/';
           }
         });
+        
+        if(visited) { 
+          setCookie('rds',snder, 1000);
+          //alert('no point')
+        } else {
+          setCookie('rds',snder, 1000);
+          //alert('one point')
+        }
+
       }
     }
 

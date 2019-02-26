@@ -79,23 +79,26 @@ app.use('/cdn', express.static(__dirname + '/cdn') );
 app.use('/ad/*', express.static(__dirname + '/landerroot') );
 app.use('/', express.static(__dirname + '/wwwroot/', options) );
 
-app.get('/ids', (req, res) => {
-  res.status(200).send(ids);
-})
+app.use(express.static(path.join(__dirname, 'dist')));
+
+app.get('/app', (req, res, next) => {
+  res.sendfile(path.resolve('./dist/index.html'));
+});
+
+app.use('/app/*', (req, res, next) => {
+  res.sendfile(__dirname + '/dist/index.html');
+});
+
 
 
 app.get('/:id', (req, res)=> {
   if(Boolean(req.params.id)){
-    ids.push(req.params.id)
-    console.log(req.useragent)
     res.header('drv', req.params.id);
+    res.status(301).redirect(`/ad/${req.params.id}`)
   } 
-  res.redirect(`/ad/${req.params.id}`)
 })
 
-app.get('/', (req, res)=> {
-  res.status(200).send('ok no id');
-})
+
 
 const PORT = process.env.PORT || aport;
 let server;
