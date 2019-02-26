@@ -45,15 +45,10 @@ function postData(mdata, purl, callback) {
         processData: false,
         context: this,
         success: function(data) {
-            console.log(data)
-            if(data.success){
-                callback(true, data);
-            } else {
-                callback(false, data);
-            };
+            callback(true, data);
         },
         error: function(err) {
-            callback(false, {'data':{'err':err}} )
+            callback(false, err )
         },
         complete: function(data) { }
     });

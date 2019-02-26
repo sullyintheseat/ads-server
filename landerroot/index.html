@@ -119,24 +119,30 @@
   </body>
   <script type="text/javascript">
     $(document).ready(function(e) { init(); });
+
+    let dev = 'http://localhost:3300';
+    let prod = 'https://rsapi.digitalseat.io';
+
+    let url = dev, xer = false;
+
     let mykey, visited, driver;
     init = () => {
-      let vm = this;
+      let vm = this, data;
       mykey = localStorage.getItem('mykey');
       driver = getCookie('rds');
-      visited = Boolean(driver);
+      xer = Boolean(driver);
     
 
       if(Boolean(mykey)) {
         alert(mykey);
   
       } else {
-        //expect no key
         let value = window.location.toString().split('/');
         let snder = value[value.length-2];
         
-        getData(`https://rsapi.digitalseat.io/tag/${snder}`, (success, response) => {
+        getData(`${url}/tag/${snder}`, (success, response) => {
           if(success){
+            console.log(response);
             $("#driverFound").html(`It's your new business tool,<br/>${response.firstName} ${response.lastName}<br/> from ${response.city}, ${response.state}.`)
             //vm.window.location.href = `/app/${snder}`
           } else {
@@ -144,12 +150,22 @@
           }
         });
         
-        if(visited) { 
+  
+        if(xer) { 
           setCookie('rds',snder, 1000);
-          //alert('no point')
+          //vm.window.location.href = `/app/${snder}`
         } else {
           setCookie('rds',snder, 1000);
-          //alert('one point')
+          data = {snder}
+          console.log('here')
+          postData(data, `${url}/data`, (success, response)=> {
+            if(success) {
+              localStorage.setItem('od', snder);
+              localStorage.setItem('udid', response.did);
+            } else {
+              console.log('failed');
+            }
+          });
         }
 
       }
