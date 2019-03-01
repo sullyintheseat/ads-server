@@ -300,7 +300,7 @@
   <script type="text/javascript">
     let prod = 'https://rsapi.digitalseat.io';
     let url = prod;
-    const panels = ['mainMenu','contestDisplay','adDisplay','dsDisplay'];
+    const panels = ['mainMenu','contestDisplay','adDisplay','dsDisplay','thanksDisplay'];
     const contests = [
       {
         id : 'dm', 
@@ -395,6 +395,7 @@
           }
         });
         sendMetric(`CONTEST_SUBMIT_${tcontest.name}`)
+        showPanel('thanksDisplay');
       } else {
         alert('Please fill out all form fields.')
       }
