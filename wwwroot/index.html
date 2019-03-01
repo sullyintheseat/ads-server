@@ -7,14 +7,20 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="/cdn/js/libs//handlebars-v1.3.0.js"></script>
+    <script src="https://signup.digitalseat.io/cdn/js/libs//handlebars-v1.3.0.js"></script>
     <script src="/cdn/js/webcalls.js"></script>
+    <script src="/cdn/js/cookies.js"></script>
+    <script src="https://signup.digitalseat.io/cdn/js/libs/moment.min.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato%3A400%2C300italic%2C300%2C400italic%2C500%2C500italic%2C700%2C700italic%2C900%2C900italic&subset=latin%2Ccyrillic-ext&ver=1.0.1" type="text/css" />
+    
     <meta http-equiv="X-UA-Compatible" content="IE=edge" /><meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="cdn/style/custom.css">
+
+    <link rel="stylesheet" href="/cdn/style/portal.css">
     <style>
 
       body {
-        background-color: #fff;
+        background-color: #eee;
       }
 
       input {
@@ -88,38 +94,263 @@
     </style>
   </head>
   <body>
-
-    <div>
-
-      <div class="container" style="margin-top:8px;">
+    
+    <div class="container">
+      
+      <!-- begin main menu -->
+      <div id="mainMenu">
+        
         <div class="row">
-          <div class="col-xs-12 centered" style="border-bottom: solid 1px #c0c0c0;">
-            <img src="imgs/dslogo.jpg" alt="Digital Seat" style="width:75%; max-width:480px; padding-bottom:32px; margin-bottom: 16px;"/>
+          <div class="col-sm-10 col-sm-offset-1 centered" style="text-align: center;"><br/>
+            <img src="/adimages/texas_live_menu.png" 
+              alt="Digital Seat" 
+              style="width:100%; max-width:480px; margin-bottom: 16px;"
+              onclick="show('texas_live');"/>
           </div>
         </div>
-      </div> 
-    
-      <div class="container" style="margin-top:32px;" id="home">
+
+        <div class="row">
+          <div class="col-sm-10 col-sm-offset-1 centered" style="text-align: center;"><br/>
+            <img src="/adimages/dm_menu.png" 
+            alt="Digital Seat" 
+            style="width:100%; max-width:480px; margin-bottom: 16px;"
+            onclick="contest('dm');"/>
+          </div>
+        </div> 
         
-        <div class="row">  
-          <div class="col-xs-12 centered">
-            <h3>LANDER March 2019</h3>
-            <p>For more information on the program please visit <a href="https://www.digitalseat.com">https://www.digitalseat.com</a></p>
-            <p></p>
-          </div>  
+        <!--div class="row">
+          <div class="col-sm-10 col-sm-offset-1 centered" style="text-align: center;"><br/>
+            <img src="/adimages/flyght_menu.png" 
+              alt="Digital Seat" 
+              style="width:100%; max-width:480px; margin-bottom: 16px;"
+              onclick="show('flyght');"/>
+          </div>
+        </div-->
+
+        <div class="row">
+          <div class="col-sm-10 col-sm-offset-1 centered" style="text-align: center;"><br/>
+            <img src="/adimages/pink_menu.png" 
+            alt="Digital Seat" 
+            style="width:100%; max-width:480px; margin-bottom: 16px;"
+            onclick="contest('pink');"/>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-10 col-sm-offset-1 centered" style="text-align: center;"><br/>
+            <img src="/adimages/dstars_menu.png" 
+            alt="Digital Seat" 
+            style="width:100%; max-width:480px; margin-bottom: 16px;"
+            onclick="contest('dstars');"/>
+          </div>
+        </div>
+        
+        <div class="row">
+          <div class="col-sm-10 col-sm-offset-1 centered" style="text-align: center;"><br/>
+            <img src="/adimages/church_menu.png" 
+            alt="Digital Seat" 
+            style="width:100%; max-width:480px; margin-bottom: 16px;"
+            onclick="contest('church');"/>
+          </div>
+        </div>
+        
+
+        <!--div class="row">
+          <div class="col-sm-10 col-sm-offset-1 centered" style="text-align: center;"><br/>
+            <img src="/adimages/flyght_menu.png" 
+              alt="Digital Seat" 
+              style="width:100%; max-width:480px; margin-bottom: 16px;"
+              onclick="show('texas_live');"/>
+          </div>
+        </div-->
+
+        <!--div class="row">
+          <div class="col-sm-10 col-sm-offset-1 centered" style="text-align: center;"><br/>
+            <img src="/adimages/flyght_menu.png" 
+              alt="Digital Seat" 
+              style="width:100%; max-width:480px; margin-bottom: 16px;"
+              onclick="show('texas_live');"/>
+          </div>
+        </div-->
+
+        <div class="row">
+          <div class="col-sm-10 col-sm-offset-1 centered" style="text-align: center;"><br/>
+            <img src="/adimages/rangers_menu.png" 
+            alt="Digital Seat" 
+            style="width:100%; max-width:480px; margin-bottom: 16px;"
+            onclick="contest('rangers');"/>
+          </div>
+        </div>
+        
+        <div class="row">
+          <div class="col-sm-10 col-sm-offset-1 centered" style="text-align: center;"><br/>
+            <img src="/adimages/dseat_menu.png" 
+            alt="Digital Seat" 
+            style="width:100%; max-width:480px; margin-bottom: 16px;"
+            onclick="showSeat();"/>
+          </div>
+        </div>
+
+      </div>
+      
+      <!-- begin contest dispaly -->
+      <div id="contestDisplay" class="displayOff">
+        <div id="contest-out">
+        </div>
+      </div>
+
+      <!-- begin ad dispaly -->
+      <div id="adDisplay" class="displayOff">
+
+        <div class="row">
+          <div class="col-sm-10 col-sm-offset-1 centered" style="text-align: center;"><br/>
+            <img src="/adimages/texas_live_menu.png" 
+              alt="Digital Seat" 
+              style="width:100%; max-width:480px; margin-bottom: 16px;"
+              onclick="show('texas_live');"/>
+          </div>
         </div>
 
       </div>
 
-     
+      <div id="dsDisplay" class="displayOff">
+        <div class="row">
+          <div class="col-sm-10 col-sm-offset-1 centered" style="text-align:center"><br/>
+            <img src="/adimages/dseat_head.png" 
+              alt="Digital Seat" 
+              style="width:100%; max-width:480px; margin-bottom: 16px;"/>
+            <div style="text-align: left; width:100%">
+              <p>Hey there Rideshare passengers and welcome to Digital Seat!</p>
+              <p>We are a DFW based media agency that specializes in creating interactive experiences for various industries from rideshare passengers to sports fans and beyond.</p>
+              <p>We are huge believers in privacy, which means that we WILL NOT sell/donate/loan any of your identifiable information to any 3rd party marketing firms (we think that is as annoying as you do). We want you to enjoy using our platform without having to worry about your data being shared amongst the sprawling landscape of the internet. If you see an ad that you like, then give it a look, (that’s what helps us keep the lights at the office on and allows us to give our users cool free stuff!) and let us know if there is anything we could do to make the platform better.</p>
+              <p>Thanks again for using Digital Seat. We’re really happy to have you here!</p>              
+            </div>
+            <div style="width:100%;" class="centered">
+              <button class="btn btn-md" onclick="external('https://www.digitalseat.com')">VISIT DIGITAL SEAT</button>
+              <br/><br/>
+              <button class="btn btn-md" onclick="menu();">BACK</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
     </div>
+
+     <!-- handlebars templates -->
+     <script type="text/x-handlebars" id="contestOut-template">
+        {{#data}}
+        <div class="row">
+          <div class="col-xs-12 centered" style="text-align: center;"><br/>
+            <img src="/adimages/{{image}}" 
+              alt="Digital Seat" 
+              style="width:100%; max-width:480px; margin-bottom: 16px;"
+              onclick="show('texas_live');"/>
+            <br/>
+            <h3 style="text-align:center;">Enter To Win</h3>
+            <input type="text" id='txt_first' placeholder="First Name" class="form-control" /><br/>
+            <input type="text" id='txt_last' placeholder="Last Name" class="form-control" /><br/>
+            <input type="text" id='txt_email' placeholder="Email Address" class="form-control" /><br/>
+            <input type="text" id='txt_mobile' placeholder="Mobile Number" class="form-control" /><br/>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12 centered" style="text-align: center;">
+            <div style="width:25%; float:left;">
+              <button class="btn btn-md" onclick="menu();">BACK</button>
+            </div>
+            <div style="width:50%; float:left;">
+              <button class="btn btn-md" onclick="submitForm()">SUBMIT FORM</button>
+            </div>
+            <div style="width:25%; float:left;">
+              <button class="btn btn-md" onclick="rules('{{contest}}')">RULES</button>
+            </div>
+          </div>
+        </div>
+        
+        {{/data}}
+    </script>
 
   </body>
   <script type="text/javascript">
-    $(document).ready(function(e) { init(); });
+
+    const panels = ['mainMenu','contestDisplay','adDisplay','dsDisplay'];
+    const contests = [
+      {id : 'dm', name:'DALLAS_MAVERICKS'},
+      {id : 'pink', name:'PINK'},
+      {id : 'dstars', name:'DALLAS_STARS'},
+      {id : 'church', name:'ERIC_CHURCH'},
+      {id : 'rangers', name:'RANGERS'},
+    ];
+    let ideed = false. tcontest;
   
+    $(document).ready(function(e) { init(); });
     init = () => {
-      //alert(localStorage.getItem('mykey'));
+      ideed = Boolean(localStorage.getItem('od')) && Boolean(localStorage.getItem('udid') && getCookie('rds'));
+      if(!ideed) {
+        if(!Boolean(getCookie('rds'))) {
+          setCookie('rds','anon', 1000);
+        }
+      }
+    }
+
+    show = (target) => {
+      showPanel('adDisplay');
+      console.log(`switch to ${target}`);
+    }
+
+    menu = () => {
+      showPanel('mainMenu');
+    }
+
+    showSeat = () => {
+      showPanel('dsDisplay')
+    }
+
+    contest = (target) => {
+      for(let i =0; i < contests.length; i++){
+        if(contests[i].id === target){
+          //alert(contests[i])
+          tcontest = contests[i];
+        }
+      }
+      showPanel('contestDisplay');
+      setContent('contestOut-template', {data: {image: target + '_head.png', contest: tcontest.id}}, 'contest-out');
+      console.log(`switch to contest for ${target}`)
+    }
+
+    submitForm = () => {
+      let first = $('#txt_first').val();
+      let last = $('#txt_last').val();
+      let email = $('#txt_email').val();
+      let mobile = $('#txt_mobile').val();
+
+      let device = localStorage.getItem('udid');
+      if(!Boolean(device)){
+        device = null;
+      }
+      if(Boolean(first) && Boolean(last) && Boolean(email) && Boolean(mobile)) {
+        let formData = {
+          firstName : first,
+          lastName: last,
+          email: email,
+          mobile: mobile,
+          driverId: getCookie('rds'),
+          device: device,
+          contest: tcontest.name
+        }
+        console.log(formData)
+      } else {
+        alert('Please fill out all form fields.')
+      }
+    }
+
+    rules = (target) => {
+      alert(`Open rules for ${target}`);
+    }
+
+    external = (target) => {
+      window.open(target)
     }
 
 </script>

@@ -75,18 +75,20 @@ var options = {
 };
 
 app.use(express.static('app', options));
+
+app.use('/', express.static(__dirname + '/wwwroot/', options) );
 app.use('/cdn', express.static(__dirname + '/cdn') );
 app.use('/ad/*', express.static(__dirname + '/landerroot') );
-app.use('/', express.static(__dirname + '/wwwroot/', options) );
+
 
 app.use(express.static(path.join(__dirname, 'dist')));
 
 app.get('/app', (req, res, next) => {
-  res.sendfile(path.resolve('./dist/index.html'));
+  res.sendfile(path.resolve('./wwwroot/index.html'));
 });
 
 app.use('/app/*', (req, res, next) => {
-  res.sendfile(__dirname + '/dist/index.html');
+  res.sendfile(__dirname + '/wwwroot/index.html');
 });
 
 
