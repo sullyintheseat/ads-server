@@ -34,7 +34,7 @@ function getData(op, cb) {
 };
 
 
-function postData(mdata, purl, callback) {
+function postData(mdata, purl, callback, done) {
     var success = false;
     $.ajax({
         url: purl,
@@ -50,7 +50,9 @@ function postData(mdata, purl, callback) {
         error: function(err) {
             callback(false, err )
         },
-        complete: function(data) { }
+        complete: function(data) { 
+            done();
+        }
     });
 
 

@@ -119,41 +119,27 @@
   </body>
   <script type="text/javascript">
     $(document).ready(function(e) { init(); });
-
-    let dev = 'http://localhost:3300';
     let prod = 'https://rsapi.digitalseat.io';
-
     let url = prod, xer = false;
-
     let mykey, visited, driver;
+
     init = () => {
       let vm = this, data;
+      let value = window.location.toString().split('/');
+      let snder = value[value.length-2];
       mykey = localStorage.getItem('mykey');
       driver = getCookie('rds');
       xer = Boolean(driver);
-    
-
+      
+      if(driver === 'anon') { setCookie('rds',snder, 1000); }
       if(Boolean(mykey)) {
-        alert(mykey);
-  
+        
       } else {
-        let value = window.location.toString().split('/');
-        let snder = value[value.length-2];
         
-        getData(`${url}/tag/${snder}`, (success, response) => {
-          if(success){
-            console.log(response);
-            $("#driverFound").html(`It's your new business tool,<br/>${response.firstName} ${response.lastName}<br/> from ${response.city}, ${response.state}.`)
-            //vm.window.location.href = `/app/${snder}`
-          } else {
-           // vm.window.location.href =  '/';
-          }
-        });
-        
-  
         if(xer) { 
           setCookie('rds',snder, 1000);
-          //vm.window.location.href = `/app/${snder}`
+          console.log('done')
+          vm.initComplete();
         } else {
           setCookie('rds',snder, 1000);
           data = {snder}
@@ -162,13 +148,20 @@
             if(success) {
               localStorage.setItem('od', snder);
               localStorage.setItem('udid', response.did);
+              console.log(success);
             } else {
-              console.log('failed');
+              window.location.href = `/`
             }
-          });
+          },() => {
+            vm.initComplete();
+          })
         }
-
       }
+    }
+    
+    initComplete = () => {
+      driver = getCookie('rds');
+      window.location.href = `/`
     }
 
 </script>

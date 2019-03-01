@@ -145,15 +145,23 @@
           </div>
         </div>
         
-        <div class="row">
+        <!--div class="row">
           <div class="col-sm-10 col-sm-offset-1 centered" style="text-align: center;"><br/>
             <img src="/adimages/church_menu.png" 
             alt="Digital Seat" 
             style="width:100%; max-width:480px; margin-bottom: 16px;"
             onclick="contest('church');"/>
           </div>
-        </div>
+        </div-->
         
+        <div class="row">
+          <div class="col-sm-10 col-sm-offset-1 centered" style="text-align: center;"><br/>
+            <img src="/adimages/vinopalooza_menu.png" 
+            alt="Digital Seat" 
+            style="width:100%; max-width:480px; margin-bottom: 16px;"
+            onclick="show('vinopalooza');"/>
+          </div>
+        </div>
 
         <!--div class="row">
           <div class="col-sm-10 col-sm-offset-1 centered" style="text-align: center;"><br/>
@@ -200,7 +208,7 @@
       </div>
 
       <!-- begin ad dispaly -->
-      <div id="adDisplay" class="displayOff">
+      <div id="adDisplay_texas_live" class="displayOff">
 
         <div class="row">
           <div class="col-sm-10 col-sm-offset-1 centered" style="text-align: center;"><br/>
@@ -221,6 +229,27 @@
         </div>
 
       </div>
+
+      <div id="adDisplay_vinopalooza" class="displayOff">
+
+          <div class="row">
+            <div class="col-xs-12 centered" style="text-align: center;"><br/>
+              <img src="/adimages/vinopalooza_head.png" 
+                alt="Digital Seat" 
+                style="width:100%; max-width:480px; margin-bottom: 16px;"
+                onclick="show('texas_live');"/>
+              
+              <div style="width:100%; text-align: center;">
+                <br/>
+                <button class="btn btn-md" onclick="contest('dvinopalooza');">ENTER TO WIN DALLAS</button><br/><br/>
+                <button class="btn btn-md" onclick="contest('fwvinopalooza');">ENTER TO WIN FORT WORTH</button><br/><br/>
+                <button class="btn btn-md" onclick="external('https://www.vino-palooza.com/tickets')">BUY TICKETS</button>
+                    
+              </div>
+            </div>
+          </div>
+  
+        </div>
 
       <div id="dsDisplay" class="displayOff">
         <div class="row">
@@ -249,10 +278,10 @@
             <img src="/adimages/dseat_head.png" 
             alt="Digital Seat" 
             style="width:100%; max-width:480px; margin-bottom: 16px;"/>
-            <div style="text-align: left; width:100%">
+           
               <h3>GOOD LUCK!</h3>
               <p>Thanks for entering the contest.</p>
-            </div>
+            
             <div style="width:100%;" class="centered">
               <button class="btn btn-md" onclick="menu();">BACK</button>
             </div>
@@ -300,7 +329,7 @@
   <script type="text/javascript">
     let prod = 'https://rsapi.digitalseat.io';
     let url = prod;
-    const panels = ['mainMenu','contestDisplay','adDisplay','dsDisplay','thanksDisplay'];
+    const panels = ['mainMenu','contestDisplay','adDisplay_texas_live','dsDisplay','thanksDisplay','adDisplay_vinopalooza'];
     const contests = [
       {
         id : 'dm', 
@@ -327,6 +356,16 @@
         name:'RANGERS',
         content: '<p>Hey there Rideshare passengers! At Digital Seat we believe in the power of free stuff, and we are happy to be giving away (2) free Texas Rangers tickets to the game on April 15th, 2019!</p><p>Simply tap the “Enter Here!” button below to be entered into the drawing. We will be drawing a winner before April 5th, 2019.</p><p>We will NOT sell your information to ANY 3rd party marketing services or bother you with any promotional offers. The only reason you will hear from us is if you have won a giveaway item. That’s a nice change of pace, right?</p><p>Good luck and thanks for using Digital Seat!</p>'
       },
+      {
+        id : 'dvinopalooza',
+        name:'DALLAS_VINOPALOOZA',
+        content: '<p>Hey there Rideshare passengers! Complete the form for your chance to win entry to Vinopalooza</p><p>Good luck and thanks for using Digital Seat!</p>'
+      },
+      {
+        id : 'fwvinopalooza',
+        name:'FTWORTH_VINOPALOOZA',
+        content: '<p>Hey there Rideshare passengers! Complete the form for your chance to win entry to Vinopalooza</p><p>Good luck and thanks for using Digital Seat!</p>'
+      },
     ];
     let ideed = false. tcontest;
   
@@ -342,7 +381,7 @@
 
     show = (target) => {
       sendMetric(target);
-      showPanel('adDisplay');
+      showPanel(`adDisplay_${target}`);
     }
 
     menu = () => {
@@ -393,7 +432,7 @@
           } else {
             
           }
-        });
+        },()=>{});
         sendMetric(`CONTEST_SUBMIT_${tcontest.name}`)
         showPanel('thanksDisplay');
       } else {
@@ -422,8 +461,8 @@
         driverId,
         device
       }
-      postData(data, `${url}/ads/mtr`, (success, response) => {
-      })
+      postData(data, `${url}/ads/mtr`, (success, response,) => {
+      },()=>{})
     }
 
 </script>
