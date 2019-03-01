@@ -208,6 +208,15 @@
               alt="Digital Seat" 
               style="width:100%; max-width:480px; margin-bottom: 16px;"
               onclick="show('texas_live');"/>
+            <div style="text-align: left; width:100%">
+              <p>Visit Texas Live! The Capitol of Sports and Entertainment</p>
+              <p>Experience a dynamic, 200,000 square foot world class dining, entertainment and hospitality district situated southwest of globe Life park in Arlington.  For upcoming concerts or events go to Texas-live.com.  It’s the place to be games days or any day!</p> 
+            </div>
+            <div style="width:100%;" class="centered">
+              <button class="btn btn-md" onclick="external('https://texas-live.com/', 'TEXAS_LIVE')">VISIT TEXAS LI</button>
+              <br/><br/>
+              <button class="btn btn-md" onclick="menu();">BACK</button>
+            </div>
           </div>
         </div>
 
@@ -226,7 +235,7 @@
               <p>Thanks again for using Digital Seat. We’re really happy to have you here!</p>              
             </div>
             <div style="width:100%;" class="centered">
-              <button class="btn btn-md" onclick="external('https://www.digitalseat.com')">VISIT DIGITAL SEAT</button>
+              <button class="btn btn-md" onclick="external('https://www.digitalseat.com','DIGITALSEAT')">VISIT DIGITAL SEAT</button>
               <br/><br/>
               <button class="btn btn-md" onclick="menu();">BACK</button>
             </div>
@@ -234,6 +243,22 @@
         </div>
       </div>
 
+      <div id="thanksDisplay" class="displayOff">
+        <div class="row">
+          <div class="col-sm-10 col-sm-offset-1 centered" style="text-align:center"><br/>
+            <img src="/adimages/dseat_head.png" 
+            alt="Digital Seat" 
+            style="width:100%; max-width:480px; margin-bottom: 16px;"/>
+            <div style="text-align: left; width:100%">
+              <h3>GOOD LUCK!</h3>
+              <p>Thanks for entering the contest.</p>
+            </div>
+            <div style="width:100%;" class="centered">
+              <button class="btn btn-md" onclick="menu();">BACK</button>
+            </div>
+          </div>
+        </div>
+      </div>
 
     </div>
 
@@ -244,14 +269,14 @@
           <div class="col-xs-12 centered" style="text-align: center;"><br/>
             <img src="/adimages/{{image}}" 
               alt="Digital Seat" 
-              style="width:100%; max-width:480px; margin-bottom: 16px;"
-              onclick="show('texas_live');"/>
+              style="width:100%; max-width:480px; margin-bottom: 16px;"/>
             <br/>
+            {{{content}}}
             <h3 style="text-align:center;">Enter To Win</h3>
             <input type="text" id='txt_first' placeholder="First Name" class="form-control" /><br/>
             <input type="text" id='txt_last' placeholder="Last Name" class="form-control" /><br/>
             <input type="text" id='txt_email' placeholder="Email Address" class="form-control" /><br/>
-            <input type="text" id='txt_mobile' placeholder="Mobile Number" class="form-control" /><br/>
+            <input type="number" id='txt_mobile' placeholder="Mobile Number" class="form-control" /><br/>
           </div>
         </div>
         <div class="row">
@@ -260,7 +285,7 @@
               <button class="btn btn-md" onclick="menu();">BACK</button>
             </div>
             <div style="width:50%; float:left;">
-              <button class="btn btn-md" onclick="submitForm()">SUBMIT FORM</button>
+              <button class="btn btn-md" onclick="submitForm()">ENTER HERE</button>
             </div>
             <div style="width:25%; float:left;">
               <button class="btn btn-md" onclick="rules('{{contest}}')">RULES</button>
@@ -273,14 +298,35 @@
 
   </body>
   <script type="text/javascript">
-
+    let prod = 'https://rsapi.digitalseat.io';
+    let url = prod;
     const panels = ['mainMenu','contestDisplay','adDisplay','dsDisplay'];
     const contests = [
-      {id : 'dm', name:'DALLAS_MAVERICKS'},
-      {id : 'pink', name:'PINK'},
-      {id : 'dstars', name:'DALLAS_STARS'},
-      {id : 'church', name:'ERIC_CHURCH'},
-      {id : 'rangers', name:'RANGERS'},
+      {
+        id : 'dm', 
+        name:'DALLAS_MAVERICKS',
+        content: '<p>Hey there Rideshare passengers! At Digital Seat we believe in the power of free stuff, and we are happy to be giving away (2) free Dallas Mavericks tickets to the game on March 26th, 2019!</p><p>Simply tap the “Enter Here!” button below to be entered into the drawing. We will be drawing a winner before March 20th, 2019.</p><p>We will NOT sell your information to ANY 3rd party marketing services or bother you with any promotional offers. The only reason you will hear from us is if you have won a giveaway item. That’s a nice change of pace, right?</p><p>Good luck and thanks for using Digital Seat!</p>'
+      },
+      {
+        id : 'pink',
+        name:'PINK',
+        content: '<p>Hey there Rideshare passengers! At Digital Seat we believe in the power of free stuff, and we are happy to be giving away (2) free tickets to see P!nk in concert on March 24th, 2019!</p><p>Simply tap the “Enter Here!” button below to be entered into the drawing to see the 3 time Grammy winning artist! We will be drawing a winner before March 18th, 2019.</p><p>We will NOT sell your information to ANY 3rd party marketing services or bother you with any promotional offers. The only reason you will hear from us is if you have won a giveaway item. That’s a nice change of pace, right?</p><p>Good luck and thanks for using Digital Seat!</p>'
+      },
+      {
+        id : 'dstars', 
+        name:'DALLAS_STARS',
+        content: '<p>Hey there Rideshare passengers! At Digital Seat we believe in the power of free stuff, and we are happy to be giving away (2) free tickets to see your Dallas Stars on March 21th, 2019!</p><p>Simply tap the “Enter Here!” button below to be entered into the drawing! We will be drawing a winner before March 15th, 2019.</p><p>We will NOT sell your information to ANY 3rd party marketing services or bother you with any promotional offers. The only reason you will hear from us is if you have won a giveaway item. That’s a nice change of pace, right?</p><p>Good luck and thanks for using Digital Seat!</p>'
+      },
+      {
+        id : 'church', 
+        name:'ERIC_CHURCH',
+        content: '<p>Hey there Rideshare passengers! At Digital Seat we believe in the power of free stuff, and we are happy to be giving away (2) free tickets to see platinum selling artist Eric Church on April 12th, 2019 at American Airlines center!</p><p>Simply tap the “Enter Here!” button below to be entered into the drawing! We will be drawing a winner before April 3rd, 2019. </p><p>We will NOT sell your information to ANY 3rd party marketing services or bother you with any promotional offers. The only reason you will hear from us is if you have won a giveaway item. That’s a nice change of pace, right? </p><p>Good luck and thanks for using Digital Seat! </p>'
+      },
+      {
+        id : 'rangers',
+        name:'RANGERS',
+        content: '<p>Hey there Rideshare passengers! At Digital Seat we believe in the power of free stuff, and we are happy to be giving away (2) free Texas Rangers tickets to the game on April 15th, 2019!</p><p>Simply tap the “Enter Here!” button below to be entered into the drawing. We will be drawing a winner before April 5th, 2019.</p><p>We will NOT sell your information to ANY 3rd party marketing services or bother you with any promotional offers. The only reason you will hear from us is if you have won a giveaway item. That’s a nice change of pace, right?</p><p>Good luck and thanks for using Digital Seat!</p>'
+      },
     ];
     let ideed = false. tcontest;
   
@@ -295,28 +341,30 @@
     }
 
     show = (target) => {
+      sendMetric(target);
       showPanel('adDisplay');
-      console.log(`switch to ${target}`);
     }
 
     menu = () => {
+      sendMetric('mainMenu');
       showPanel('mainMenu');
     }
 
     showSeat = () => {
+      sendMetric('digitalSeat');
       showPanel('dsDisplay')
     }
 
     contest = (target) => {
+      
       for(let i =0; i < contests.length; i++){
         if(contests[i].id === target){
-          //alert(contests[i])
           tcontest = contests[i];
         }
       }
+      sendMetric(tcontest.name);
       showPanel('contestDisplay');
-      setContent('contestOut-template', {data: {image: target + '_head.png', contest: tcontest.id}}, 'contest-out');
-      console.log(`switch to contest for ${target}`)
+      setContent('contestOut-template', {data: {image: target + '_head.png', contest: tcontest.id, content: tcontest.content}}, 'contest-out');
     }
 
     submitForm = () => {
@@ -339,7 +387,14 @@
           device: device,
           contest: tcontest.name
         }
-        console.log(formData)
+        postData(formData, `${url}/entry`, (success, response) => {
+          if(success) {
+           
+          } else {
+            
+          }
+        });
+        sendMetric(`CONTEST_SUBMIT_${tcontest.name}`)
       } else {
         alert('Please fill out all form fields.')
       }
@@ -349,8 +404,25 @@
       alert(`Open rules for ${target}`);
     }
 
-    external = (target) => {
+    external = (target, client) => {
+      sendMetric(`EXTERNAL_${client}`);
       window.open(target)
+    }
+
+    sendMetric = (target) => {
+      let device = localStorage.getItem('udid');
+      let driverId = getCookie('rds');
+      let spot = target;
+      if(!Boolean(device)){
+        device = null;
+      }
+      data = {
+        spot,
+        driverId,
+        device
+      }
+      postData(data, `${url}/ads/mtr`, (success, response) => {
+      })
     }
 
 </script>
