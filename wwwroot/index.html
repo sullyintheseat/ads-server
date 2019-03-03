@@ -100,6 +100,15 @@
         
         <div class="row">
           <div class="col-sm-10 col-sm-offset-1 centered" style="text-align: center;"><br/>
+            <img src="/adimages/dfw.png" 
+              alt="Digital Seat" 
+              style="width:100%; max-width:480px; margin-bottom: 16px;"
+              onclick="showDfw();"/>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-10 col-sm-offset-1 centered" style="text-align: center;"><br/>
             <img src="/adimages/texas_live_menu.png" 
               alt="Digital Seat" 
               style="width:100%; max-width:480px; margin-bottom: 16px;"
@@ -230,24 +239,51 @@
 
       <div id="adDisplay_vinopalooza" class="displayOff">
 
-          <div class="row">
-            <div class="col-xs-12 centered" style="text-align: center;"><br/>
-              <img src="/adimages/vinopalooza_head.png" 
-                alt="Digital Seat" 
-                style="width:100%; max-width:480px; margin-bottom: 16px;"/>
-              
-              <div style="width:100%; text-align: center;">
-                <br/>
-                <button class="btn btn-md btn-dark" onclick="contest('dvinopalooza');">ENTER TO WIN DALLAS</button><br/><br/>
-                <button class="btn btn-md btn-dark" onclick="contest('fwvinopalooza');">ENTER TO WIN FORT WORTH</button><br/><br/>
-                <button class="btn btn-md btn-dark" onclick="external('https://www.vino-palooza.com/tickets','VINOPALOOZA')">BUY TICKETS</button><br/><br/>
-                <button class="btn btn-md btn-dark" onclick="menu();">BACK</button>
-                    
-              </div>
+        <div class="row">
+          <div class="col-xs-12 centered" style="text-align: center;"><br/>
+            <img src="/adimages/vinopalooza_head.png" 
+              alt="Digital Seat" 
+              style="width:100%; max-width:480px; margin-bottom: 16px;"/>
+            
+            <div style="width:100%; text-align: center;">
+              <br/>
+              <button class="btn btn-md btn-dark" onclick="contest('dvinopalooza');">ENTER TO WIN DALLAS</button><br/><br/>
+              <button class="btn btn-md btn-dark" onclick="contest('fwvinopalooza');">ENTER TO WIN FORT WORTH</button><br/><br/>
+              <button class="btn btn-md btn-dark" onclick="external('https://www.vino-palooza.com/tickets','VINOPALOOZA')">BUY TICKETS</button><br/><br/>
+              <button class="btn btn-md btn-dark" onclick="menu();">BACK</button>
+                  
             </div>
           </div>
-  
         </div>
+
+      </div>
+
+      <div id="dfwDisplay" class="displayOff">
+        <div class="row">
+          <div class="col-sm-10 col-sm-offset-1 centered" style="text-align:center"><br/>
+            <img src="/adimages/concert.png" 
+              alt="Digital Seat" 
+              style="width:100%; max-width:480px; margin-bottom: 16px;" onclick="external('https://www.facebook.com/events/493182184541684/','EVENT_TEXAS_BORN');"/><br/>
+
+            <img src="/adimages/independence.png" 
+              alt="Digital Seat" 
+              style="width:100%; max-width:480px; margin-bottom: 16px;" onclick="external('https://www.ticketfly.com/event/1825364-texas-independence-day-bash-fort-worth/','EVENT_TEXAS_INDEPENDENCE');"/><br/>
+            
+            <img src="/adimages/fattuesday.png" 
+              alt="Digital Seat" 
+              style="width:100%; max-width:480px; margin-bottom: 16px;" onclick="external('https://www.eventbrite.com/e/13th-annual-texas-sized-fat-tuesday-gas-monkey-live-tickets-54560822890','EVENT_FAT_TUESDAY');"/><br/>
+
+            <img src="/adimages/parade.png" 
+              alt="Digital Seat" 
+              style="width:100%; max-width:480px; margin-bottom: 16px;" onclick="external('https://www.facebook.com/events/2223173631275411/','EVENT_OAK_CLIFF_PARADE');"/><br/>
+            
+            <div style="width:100%;" class="centered">
+              <br/><br/>
+              <button class="btn btn-md btn-dark" onclick="menu();">BACK</button>
+            </div>
+          </div>
+        </div>
+      </div>
 
       <div id="dsDisplay" class="displayOff">
         <div class="row">
@@ -346,7 +382,7 @@
   <script type="text/javascript">
     let prod = 'https://rsapi.digitalseat.io';
     let url = prod;
-    const panels = ['rulesDisplay', 'mainMenu','contestDisplay','adDisplay_texas_live','dsDisplay','thanksDisplay','adDisplay_vinopalooza'];
+    const panels = ['rulesDisplay', 'mainMenu','contestDisplay','adDisplay_texas_live','dsDisplay','thanksDisplay','adDisplay_vinopalooza', 'dfwDisplay'];
     const contests = [
       {
         id : 'dm', 
@@ -430,6 +466,11 @@
     showSeat = () => {
       sendMetric('digitalSeat');
       showPanel('dsDisplay')
+    }
+
+    showDfw = () => {
+      sendMetric('dfw');
+      showPanel('dfwDisplay')
     }
 
     contest = (target) => {
