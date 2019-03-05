@@ -94,7 +94,7 @@
   <body>
     
     <div class="container">
-      
+    
       <!-- begin main menu -->
       <div id="mainMenu">
         
@@ -219,6 +219,8 @@
 
         <div class="row">
           <div class="col-sm-10 col-sm-offset-1 centered" style="text-align: center;"><br/>
+            <button class="btn btn-md btn-dark" onclick="menu();">BACK</button><br/>
+
             <img src="/adimages/texas_live_menu.png" 
               alt="Digital Seat" 
               style="width:100%; max-width:480px; margin-bottom: 16px;"
@@ -230,7 +232,7 @@
             <div style="width:100%;" class="centered">
               <button class="btn btn-md btn-dark" onclick="external('https://texas-live.com/', 'TEXAS_LIVE')">VISIT TEXAS LIVE</button>
               <br/><br/>
-              <button class="btn btn-md btn-dark" onclick="menu();">BACK</button>
+              
             </div>
           </div>
         </div>
@@ -241,6 +243,7 @@
 
         <div class="row">
           <div class="col-xs-12 centered" style="text-align: center;"><br/>
+            <button class="btn btn-md btn-dark" onclick="menu();">BACK</button><br/>
             <img src="/adimages/vinopalooza_head.png" 
               alt="Digital Seat" 
               style="width:100%; max-width:480px; margin-bottom: 16px;"/>
@@ -250,7 +253,7 @@
               <button class="btn btn-md btn-dark" onclick="contest('dvinopalooza');">ENTER TO WIN DALLAS</button><br/><br/>
               <button class="btn btn-md btn-dark" onclick="contest('fwvinopalooza');">ENTER TO WIN FORT WORTH</button><br/><br/>
               <button class="btn btn-md btn-dark" onclick="external('https://www.vino-palooza.com/tickets','VINOPALOOZA')">BUY TICKETS</button><br/><br/>
-              <button class="btn btn-md btn-dark" onclick="menu();">BACK</button>
+              
                   
             </div>
           </div>
@@ -261,6 +264,7 @@
       <div id="dfwDisplay" class="displayOff">
         <div class="row">
           <div class="col-sm-10 col-sm-offset-1 centered" style="text-align:center"><br/>
+            <button class="btn btn-md btn-dark" onclick="menu();">BACK</button><br />
             <img src="/adimages/concert.png" 
               alt="Digital Seat" 
               style="width:100%; max-width:480px; margin-bottom: 16px;" onclick="external('https://www.facebook.com/events/493182184541684/','EVENT_TEXAS_BORN');"/><br/>
@@ -279,7 +283,7 @@
             
             <div style="width:100%;" class="centered">
               <br/><br/>
-              <button class="btn btn-md btn-dark" onclick="menu();">BACK</button>
+              
             </div>
           </div>
         </div>
@@ -288,6 +292,7 @@
       <div id="dsDisplay" class="displayOff">
         <div class="row">
           <div class="col-sm-10 col-sm-offset-1 centered" style="text-align:center"><br/>
+            <button class="btn btn-md btn-dark" onclick="menu();">BACK</button><br />
             <img src="/adimages/dseat_head.png" 
               alt="Digital Seat" 
               style="width:100%; max-width:480px; margin-bottom: 16px;"/>
@@ -300,7 +305,7 @@
             <div style="width:100%;" class="centered">
               <button class="btn btn-md btn-dark" onclick="external('https://www.digitalseat.com','DIGITALSEAT')">VISIT DIGITAL SEAT</button>
               <br/><br/>
-              <button class="btn btn-md btn-dark" onclick="menu();">BACK</button>
+
             </div>
           </div>
         </div>
@@ -309,6 +314,7 @@
       <div id="thanksDisplay" class="displayOff">
         <div class="row">
           <div class="col-sm-10 col-sm-offset-1 centered" style="text-align:center"><br/>
+            <button class="btn btn-md btn-dark" onclick="menu();">BACK</button><br/>
             <img src="/adimages/dseat_head.png" 
             alt="Digital Seat" 
             style="width:100%; max-width:480px; margin-bottom: 16px;"/>
@@ -317,7 +323,7 @@
               <p>Thanks for entering the contest.</p>
             
             <div style="width:100%;" class="centered">
-              <button class="btn btn-md btn-dark" onclick="menu();">BACK</button>
+              
             </div>
           </div>
         </div>
@@ -335,6 +341,7 @@
         {{#data}}
         <div class="row">
           <div class="col-xs-12 centered" style="text-align: center;"><br/>
+            <button class="btn btn-md btn-dark" onclick="menu();">BACK</button><br />
             <img src="/adimages/{{image}}" 
               alt="Digital Seat" 
               style="width:100%; max-width:480px; margin-bottom: 16px;"/>
@@ -368,6 +375,7 @@
       {{#data}}
       <div class="row">
         <div class="col-xs-12" style="text-align: left;"><br/>
+          <button class="btn btn-md btn-dark" onclick="contest('{{target}}');">BACK</button><br />
           {{{content}}}
           <br/><br/>
           <div style="width:100%; text-align:center;">
