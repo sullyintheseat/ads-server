@@ -125,14 +125,14 @@
           </div>
         </div> 
         
-        <!--div class="row">
+        <div class="row">
           <div class="col-sm-10 col-sm-offset-1 centered" style="text-align: center;"><br/>
             <img src="/adimages/flyght_menu.png" 
               alt="Digital Seat" 
               style="width:100%; max-width:480px; margin-bottom: 16px;"
               onclick="show('flyght');"/>
           </div>
-        </div-->
+        </div>
 
         <div class="row">
           <div class="col-sm-10 col-sm-offset-1 centered" style="text-align: center;"><br/>
@@ -239,6 +239,28 @@
 
       </div>
 
+      
+
+      <div id="adDisplay_flyght" class="displayOff">
+
+        <div class="row">
+          <div class="col-xs-12 centered" style="text-align: center;"><br/>
+            <button class="btn btn-md btn-dark" onclick="menu();">BACK</button><br/><br/>
+            <img src="/adimages/flyght_head.png" 
+              alt="Digital Seat" 
+              style="width:100%; max-width:480px; margin-bottom: 16px;"/>
+            
+            <div style="width:100%; text-align: center;">
+              <br/>
+              <p>Download the Flyght Deck app below!</p><button class="btn btn-md btn-dark" onclick="external('https://itunes.apple.com/us/app/flyght-club/id1039375653?mt=8','FLYGHT_APPLE_DL');">APPLE</button><br/><br/><button class="btn btn-md btn-dark" onclick="external('https://play.google.com/store/apps/details?id=in.cresol.flyghtclub','FLYGHT_ANDROID_DL');">ANDROID</button><br/>
+              
+                  
+            </div>
+          </div>
+        </div>
+
+      </div>
+
       <div id="adDisplay_vinopalooza" class="displayOff">
 
         <div class="row">
@@ -265,21 +287,30 @@
         <div class="row">
           <div class="col-sm-10 col-sm-offset-1 centered" style="text-align:center"><br/>
             <button class="btn btn-md btn-dark" onclick="menu();">BACK</button><br /><br/>
-            <img src="/adimages/concert.png" 
-              alt="Digital Seat" 
-              style="width:100%; max-width:480px; margin-bottom: 16px;" onclick="external('https://www.facebook.com/events/493182184541684/','EVENT_TEXAS_BORN');"/><br/>
-
-            <img src="/adimages/independence.png" 
-              alt="Digital Seat" 
-              style="width:100%; max-width:480px; margin-bottom: 16px;" onclick="external('https://www.ticketfly.com/event/1825364-texas-independence-day-bash-fort-worth/','EVENT_TEXAS_INDEPENDENCE');"/><br/>
             
-            <img src="/adimages/fattuesday.png" 
+            <img src="/adimages/mardigras.png" 
               alt="Digital Seat" 
-              style="width:100%; max-width:480px; margin-bottom: 16px;" onclick="external('https://www.eventbrite.com/e/13th-annual-texas-sized-fat-tuesday-gas-monkey-live-tickets-54560822890','EVENT_FAT_TUESDAY');"/><br/>
+              style="width:100%; max-width:480px; margin-bottom: 16px;" onclick="external('https://www.facebook.com/events/1119104961582615/','MARDIGRAS');"/><br/>
 
-            <img src="/adimages/parade.png" 
+            <img src="/adimages/BOHOMarket.png" 
               alt="Digital Seat" 
-              style="width:100%; max-width:480px; margin-bottom: 16px;" onclick="external('https://www.facebook.com/events/2223173631275411/','EVENT_OAK_CLIFF_PARADE');"/><br/>
+              style="width:100%; max-width:480px; margin-bottom: 16px;" onclick="external('https://www.facebook.com/events/1119104961582615/','BOHO_MARKET');"/><br/>
+
+            <img src="/adimages/ScottyMcCreery.png" 
+              alt="Digital Seat" 
+              style="width:100%; max-width:480px; margin-bottom: 16px;" onclick="external('https://www.facebook.com/events/2184981065098107/','SCOTTYMCCREERY');"/><br/>
+            
+            <img src="/adimages/HurtadoBBQ.png" 
+              alt="Digital Seat" 
+              style="width:100%; max-width:480px; margin-bottom: 16px;" onclick="external('https://www.facebook.com/events/718364255215572/','HURTADO_BBQ');"/><br/>
+
+            <img src="/adimages/Yoga.png" 
+              alt="Digital Seat" 
+              style="width:100%; max-width:480px; margin-bottom: 16px;" onclick="external('https://www.facebook.com/events/524955864693528/','YOGA');"/><br/>
+
+            <img src="/adimages/IrishFestival.png" 
+              alt="Digital Seat" 
+              style="width:100%; max-width:480px; margin-bottom: 16px;" onclick="external('https://www.facebook.com/events/324837271705451/?event_time_id=324837275038784','IRISH_FESTIVAL');"/><br/>
             
             <div style="width:100%;" class="centered">
               <br/><br/>
@@ -390,7 +421,7 @@
   <script type="text/javascript">
     let prod = 'https://rsapi.digitalseat.io';
     let url = prod;
-    const panels = ['rulesDisplay', 'mainMenu','contestDisplay','adDisplay_texas_live','dsDisplay','thanksDisplay','adDisplay_vinopalooza', 'dfwDisplay'];
+    const panels = ['rulesDisplay', 'mainMenu','contestDisplay','adDisplay_texas_live','adDisplay_flyght','dsDisplay','thanksDisplay','adDisplay_vinopalooza', 'dfwDisplay'];
     const contests = [
       {
         id : 'dm', 
@@ -426,7 +457,7 @@
         id : 'fwvinopalooza',
         name:'FTWORTH_VINOPALOOZA',
         content: '<p>Hey there Rideshare passengers! Complete the form for your chance to win entry to Vinopalooza</p><p>Good luck and thanks for using Digital Seat!</p>'
-      },
+      }
     ];
 
     let rulescopy = [
