@@ -118,6 +118,15 @@
 
         <div class="row">
           <div class="col-sm-10 col-sm-offset-1 centered" style="text-align: center;"><br/>
+            <img src="/adimages/stpatricks_menu.png" 
+              alt="Digital Seat" 
+              style="width:100%; max-width:480px; margin-bottom: 16px;"
+              onclick="show('stpatricks');"/>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-10 col-sm-offset-1 centered" style="text-align: center;"><br/>
             <img src="/adimages/dm_menu.png" 
             alt="Digital Seat" 
             style="width:100%; max-width:480px; margin-bottom: 16px;"
@@ -261,6 +270,28 @@
 
       </div>
 
+      <div id="adDisplay_stpatricks" class="displayOff">
+
+        <div class="row">
+          <div class="col-xs-12 centered" style="text-align: center;"><br/>
+            <button class="btn btn-md btn-dark" onclick="menu();">BACK</button><br/><br/>
+            <img src="/adimages/stpatricks_menu.png" 
+              alt="Digital Seat" 
+              style="width:100%; max-width:480px; margin-bottom: 16px;"/>
+            
+            <div style="width:100%; text-align: center;">
+              <br/>
+              <p>40th Anniversary</p>
+              <p>St. Patrick’s Parade & Festival</p>
+              <p>March 16, 2019</p><button class="btn btn-md btn-dark" onclick="external('http://www.dallasstpatricksparade.com/','FLYGHT_APPLE_DL');">OPEN LINK</button><br/>
+              
+                  
+            </div>
+          </div>
+        </div>
+
+      </div>
+
       <div id="adDisplay_vinopalooza" class="displayOff">
 
         <div class="row">
@@ -288,30 +319,34 @@
           <div class="col-sm-10 col-sm-offset-1 centered" style="text-align:center"><br/>
             <button class="btn btn-md btn-dark" onclick="menu();">BACK</button><br /><br/>
             
-            <img src="/adimages/mardigras.png" 
+            <img src="/adimages/patgreen.png" 
               alt="Digital Seat" 
-              style="width:100%; max-width:480px; margin-bottom: 16px;" onclick="external('https://www.facebook.com/events/1119104961582615/','MARDIGRAS');"/><br/>
+              style="width:100%; max-width:480px; margin-bottom: 16px;" onclick="external('https://www.facebook.com/events/639251816492355/ ','PAT_GREEN');"/><br/>
 
-            <img src="/adimages/BOHOMarket.png" 
+            <img src="/adimages/icecube.png" 
               alt="Digital Seat" 
-              style="width:100%; max-width:480px; margin-bottom: 16px;" onclick="external('https://www.facebook.com/events/1119104961582615/','BOHO_MARKET');"/><br/>
+              style="width:100%; max-width:480px; margin-bottom: 16px;" onclick="external('https://www.facebook.com/events/358298915016198/','ICE_CUBE');"/><br/>
 
-            <img src="/adimages/ScottyMccreery.png" 
+            <img src="/adimages/yogafarmer.png" 
               alt="Digital Seat" 
-              style="width:100%; max-width:480px; margin-bottom: 16px;" onclick="external('https://www.facebook.com/events/2184981065098107/','SCOTTYMCCREERY');"/><br/>
+              style="width:100%; max-width:480px; margin-bottom: 16px;" onclick="external('https://www.facebook.com/events/375130206402983/','YOGA_FARMER');"/><br/>
             
-            <img src="/adimages/HurtadoBBQ.png" 
+            <img src="/adimages/artwalk.png" 
               alt="Digital Seat" 
-              style="width:100%; max-width:480px; margin-bottom: 16px;" onclick="external('https://www.facebook.com/events/718364255215572/','HURTADO_BBQ');"/><br/>
+              style="width:100%; max-width:480px; margin-bottom: 16px;" onclick="external('https://www.facebook.com/events/2017155335048013/ ','ARTWALK');"/><br/>
 
-            <img src="/adimages/Yoga.png" 
+            <img src="/adimages/beerolympics.png" 
               alt="Digital Seat" 
-              style="width:100%; max-width:480px; margin-bottom: 16px;" onclick="external('https://www.facebook.com/events/524955864693528/','YOGA');"/><br/>
+              style="width:100%; max-width:480px; margin-bottom: 16px;" onclick="external('https://www.facebook.com/events/331353064157985/','BEER_OLYMPICS');"/><br/>
 
-            <img src="/adimages/IrishFestival.png" 
+            <img src="/adimages/samriggs.png" 
               alt="Digital Seat" 
-              style="width:100%; max-width:480px; margin-bottom: 16px;" onclick="external('https://www.facebook.com/events/324837271705451/?event_time_id=324837275038784','IRISH_FESTIVAL');"/><br/>
+              style="width:100%; max-width:480px; margin-bottom: 16px;" onclick="external('https://www.facebook.com/events/668008133601170/','SAM_RIGGS');"/><br/>
             
+            <img src="/adimages/blockparty.png" 
+              alt="Digital Seat" 
+              style="width:100%; max-width:480px; margin-bottom: 16px;" onclick="external('https://www.facebook.com/events/289631981703844/ ','ST_PATTYS_BLOCK_PARTY');"/><br/>
+
             <div style="width:100%;" class="centered">
               <br/><br/>
               
@@ -382,7 +417,7 @@
             <input type="text" id='txt_first' placeholder="First Name" class="form-control" /><br/>
             <input type="text" id='txt_last' placeholder="Last Name" class="form-control" /><br/>
             <input type="text" id='txt_email' placeholder="Email Address" class="form-control" /><br/>
-            <input type="number" id='txt_mobile' placeholder="Mobile Number" class="form-control" /><br/>
+            <input type="text" id='txt_mobile' placeholder="Mobile Number" class="form-control" /><br/>
           </div>
         </div>
         <div class="row">
@@ -419,9 +454,10 @@
 
   </body>
   <script type="text/javascript">
+    
     let prod = 'https://rsapi.digitalseat.io';
     let url = prod;
-    const panels = ['rulesDisplay', 'mainMenu','contestDisplay','adDisplay_texas_live','adDisplay_flyght','dsDisplay','thanksDisplay','adDisplay_vinopalooza', 'dfwDisplay'];
+    const panels = ['rulesDisplay', 'mainMenu','contestDisplay','adDisplay_texas_live','adDisplay_flyght','dsDisplay','thanksDisplay','adDisplay_vinopalooza', 'dfwDisplay', 'adDisplay_stpatricks'];
     const contests = [
       {
         id : 'dm', 
