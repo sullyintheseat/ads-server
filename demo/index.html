@@ -1,0 +1,137 @@
+<html>
+  <head>
+    <title>Digital Seat - Rideshare Program</title>
+ 
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://signup.digitalseat.io/cdn/js/libs//handlebars-v1.3.0.js"></script>
+    <script src="/cdn/js/webcalls.js"></script>
+    <script src="/cdn/js/cookies.js"></script>
+    <script src="https://signup.digitalseat.io/cdn/js/libs/moment.min.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato%3A400%2C300italic%2C300%2C400italic%2C500%2C500italic%2C700%2C700italic%2C900%2C900italic&subset=latin%2Ccyrillic-ext&ver=1.0.1" type="text/css" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="/cdn/style/portal.css">
+    <style>
+
+      body {
+        background-color: #eee;
+      }
+
+      input {
+        text-align: left;
+        width:100%;
+        padding: 0.25em;      
+        border-top: none;
+        min-height: 2em;
+        border-left: none;
+        border-right: none;
+        margin-top:4px;
+        max-width: 480px;
+      }
+      input:focus{ 
+        outline: none;
+        border-bottom: 1px solid rgb(230, 145, 56);
+      }
+
+      #registration {
+        margin-top: 32px;
+        color: #393939;
+        text-align: left;
+      }
+
+      #signupSuccess {
+        margin-top: 32px;
+        color: #393939;
+        text-align: center;
+      }
+      .radio-inline label{ color:#939393; font-weight:300; }
+      
+      .btn-orange { background-color:  rgb(230, 105, 56); 
+        border-color: #9a9a9a; 
+        color:#fff; 
+        display: inline-block;
+        padding: 20px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+      }
+      
+      .btn-dark { 
+        background-color:  rgb(0, 0, 197);
+        border-color: #9a9a9a; 
+        color:#fff; 
+        display: inline-block;
+       
+        text-align: center;
+        text-decoration: none;
+        cursor: pointer;
+      }
+
+      .btn-selected { 
+        background-color:  rgb(230, 145, 56);
+        border-color: #9a9a9a; 
+        color:#fff; 
+        display: inline-block;
+        padding: 20px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    
+    <div class="container" id="content-out">
+    
+    </div>
+
+    <script type="text/x-handlebars" id="content-out-template">
+      {{#data}}
+        <div class="row">
+          <div class="col-sm-12">
+            <div style="width:100%; margin:16px 0px 0px 0px;">
+              <img src="{{logo.url}}" style="width:100%;"/>
+              {{logo.id}}
+            </div>
+          </div>
+        </div>
+      {{/data}}
+  </script>
+
+  </body>
+  <script type="text/javascript">
+    
+    let prod = 'https://rsapi.digitalseat.io';
+    let dev = 'http://localhost:3300';
+    let events;
+
+    $(document).ready(function(e) { init(); });
+
+    init = () => {
+      getData(`${dev}/v1/events/austin`, (success, response) => {
+        if(success){
+          events = response;
+          loadComplete();
+        } else {
+          alert('error retrieving live data');
+        }
+      })
+    };
+
+    loadComplete = () => {
+      setContent('content-out-template', { data: events }, 'content-out');
+    }
+
+</script>
+
+</html>

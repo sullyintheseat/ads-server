@@ -78,6 +78,7 @@ app.use(express.static('app', options));
 
 app.use('/', express.static(__dirname + '/wwwroot/', options) );
 app.use('/cdn', express.static(__dirname + '/cdn') );
+app.use('/demo', express.static(__dirname + '/demo') );
 app.use('/ad/*', express.static(__dirname + '/landerroot') );
 
 
