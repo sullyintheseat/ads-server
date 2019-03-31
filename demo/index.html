@@ -111,14 +111,14 @@
   </body>
   <script type="text/javascript">
     
-    let prod = 'https://rsapi.digitalseat.io';
+    let url = 'https://rsapi.digitalseat.io';
     let dev = 'http://localhost:3300';
     let events;
 
     $(document).ready(function(e) { init(); });
 
     init = () => {
-      getData(`${dev}/v1/events/austin`, (success, response) => {
+      getData(`${url}/v1/events/austin`, (success, response) => {
         if(success){
           events = response;
           loadComplete();
