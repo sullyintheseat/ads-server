@@ -106,7 +106,12 @@
     </div>
 
     <script type="text/x-handlebars" id="content-out-template">
-      <div class="container">
+      <div style="width:100%; z-index:1000; top:0; position:fixed; background-color:#fff; text-align:center;">
+          <div style="margin:2%;">
+            WHAT'S HAPPENING
+          </div>
+        </div>
+      <div class="container" style="margin-top:48px;">
       {{#data}}
         <div class="row">
           <div class="col-sm-12 centered">
@@ -179,6 +184,7 @@
     main = () => {
       setContent('content-out-template', { data: events }, 'content-out');
       switchPanel('content-out');
+      $('#dseat').removeClass('displayOff');
       $('#dseat').addClass('displayOn');
     }
     
