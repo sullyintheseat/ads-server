@@ -99,6 +99,19 @@
       {{#data}}
         <div class="row">
           <div class="col-sm-12">
+            <div style="width:100%; margin:16px 0px 16px 0px;">
+              <img src="{{logo.url}}" style="width:100%; border-radius: 15px;"/>
+              {{logo.id}}
+            </div>
+          </div>
+        </div>
+      {{/data}}
+    </script>
+
+    <script type="text/x-handlebars" id="event-out-template">
+      {{#data}}
+        <div class="row">
+          <div class="col-sm-12">
             <div style="width:100%; margin:16px 0px 0px 0px;">
               <img src="{{logo.url}}" style="width:100%;"/>
               {{logo.id}}
@@ -106,8 +119,8 @@
           </div>
         </div>
       {{/data}}
-  </script>
-
+    </script>
+    
   </body>
   <script type="text/javascript">
     
