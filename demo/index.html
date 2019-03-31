@@ -19,6 +19,7 @@
 
       body {
         background-color: #eee;
+        font-weight: 300;
       }
 
       input {
@@ -91,10 +92,10 @@
   </head>
   <body>
     
-    <div class="container">
-      <div id="content-out"></div>
-      
-      <div class="row" style="margin-bottom:32px;">
+    <div>
+      <div id="content-out" class="displayOn"></div>
+      <div id="event-out" class="displayOff"></div>
+      <div class="row" style="margin-bottom:32px;" id="dseat">
         <div class="col-sm-10 col-sm-offset-1 centered" style="text-align: center;"><br/>
           <img src="/adimages/dseat_menu.png" 
           alt="Digital Seat" 
@@ -105,34 +106,44 @@
     </div>
 
     <script type="text/x-handlebars" id="content-out-template">
+      <div class="container">
       {{#data}}
         <div class="row">
           <div class="col-sm-12">
             <div style="width:100%; margin:16px 0px 16px 0px;">
-              <img src="{{logo.url}}" style="width:100%; border-radius: 15px;"/>
-              {{logo.id}}
+              <img src="{{logo.url}}" style="width:100%; border-radius: 15px;" onclick="showEvent('{{id}}');"/>
             </div>
           </div>
         </div>
       {{/data}}
+      </div>
     </script>
 
     <script type="text/x-handlebars" id="event-out-template">
-      {{#data}}
+      <div style="width:100%; z-index:1000; top:0; position:fixed; background-color:#fff; text-align:center;">
+        <div style="margin:2%;" onclick="main()">
+          <i class="glyphicon glyphicon-home"></i> HOME
+        </div>
+      </div>
+      <div class="container" style="margin-top:48px;">
+      {{#data}}     
         <div class="row">
           <div class="col-sm-12">
-            <div style="width:100%; margin:16px 0px 0px 0px;">
+            <div style="width:100%; margin:16px 0px 32px 0px;">
               <img src="{{logo.url}}" style="width:100%;"/>
-              {{logo.id}}
+              <p><br/>{{name.text}}</p>
+              <p>{{description.text}}</p>
+              <button onclick="external('{{url}}');">MORE INFORMATION</button>
             </div>
           </div>
         </div>
       {{/data}}
+      </div>
     </script>
     
   </body>
   <script type="text/javascript">
-    
+    let panels =['content-out','event-out','dseat']
     let url = 'https://rsapi.digitalseat.io';
     let dev = 'http://localhost:3300';
     let events;
@@ -152,6 +163,36 @@
 
     loadComplete = () => {
       setContent('content-out-template', { data: events }, 'content-out');
+    }
+
+    showEvent = (id) => {
+      let eventToShow;
+      for(let i = 0; i < events.length; i++) {
+        if(events[i].id === id){
+          eventToShow = events[i];
+        }
+      }
+      setContent('event-out-template', { data: eventToShow}, 'event-out');
+      switchPanel('event-out');
+    }
+
+    main = () => {
+      setContent('content-out-template', { data: events }, 'content-out');
+      switchPanel('content-out');
+      $('#dseat').addClass('displayOn');
+    }
+    
+    switchPanel = (panel) => {
+      for(let i = 0; i < panels.length; i++){
+        $('#' + panels[i]).removeClass('displayOn');
+        $('#' + panels[i]).addClass('displayOff');
+      };
+      $('#' + panel).removeClass('displayOff');
+      $('#' + panel).addClass('displayOn');
+    }
+
+    external = (target) => {
+      window.open(target)
     }
 
 </script>
