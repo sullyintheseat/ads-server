@@ -140,8 +140,8 @@
     <div>
       <div id="content-out" class="displayOn">
           <div style="width:100%; z-index:1000; top:0; position:fixed; background-color:#fff; text-align:center;">
-              <div style="margin:2%;">
-                WHAT'S HAPPENING
+              <div style="padding:2%;">
+                WHAT'S HAPPENING <i class="glyphicon glyphicon-menu-hamburger" style="margin-left:55%; color:#efefef;"></i>
               </div>
           </div>
           <div style="margin-top:48px; width:100%; text-align: center; margin-bottom:164px;">
@@ -162,11 +162,11 @@
 
     <script type="text/x-handlebars" id="content-out-template">
       <div style="width:100%; z-index:1000; top:0; position:fixed; background-color:#fff; text-align:center;">
-          <div style="margin:2%;">
-            WHAT'S HAPPENING
-          </div>
+        <div style="padding:2%;">
+          WHAT'S HAPPENING <i class="glyphicon glyphicon-menu-hamburger" style="margin-left:55%; color:rgb(230, 145, 56);"></i>
         </div>
       </div>
+      
       <div class="container" style="margin-top:48px;">
       {{#data}}
         <div class="row">
@@ -213,14 +213,15 @@
     let panels =['content-out','event-out','dseat']
     let url = 'https://rsapi.digitalseat.io';
     let dev = 'http://localhost:3300';
+    let categories;
     let events;
 
     $(document).ready(function(e) { init(); });
 
     init = () => {
-      getData(`${url}/v1/events/austin`, (success, response) => {
+      getData(`${url}/v1/eb/categories`, (success, response) => {
         if(success){
-          events = response;
+          categories = response;
           loadComplete();
         } else {
           alert('error retrieving live data');
@@ -229,9 +230,20 @@
     };
 
     loadComplete = () => {
-      setContent('content-out-template', { data: events }, 'content-out');
+      getData(`${url}/v1/events/austin`, (success, response) => {
+        if(success){
+          events = response;
+          displayEvents();
+        } else {
+          alert('error retrieving live data');
+        }
+      });
     }
 
+    displayEvents = () => {
+      console.log(categories);
+      setContent('content-out-template', { data: events }, 'content-out');
+    }
     showEvent = (id) => {
       let eventToShow;
       for(let i = 0; i < events.length; i++) {
