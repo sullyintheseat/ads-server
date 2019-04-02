@@ -132,7 +132,21 @@
     @keyframes animatebottom { 
       from{ bottom:-100px; opacity:0 } 
       to{ bottom:0; opacity:1 }
+    } 
+
+    .submenu { list-style: none;}
+    .submenu li { margin-bottom: 4px;}
+    .slider {
+      overflow-y: hidden;
+      max-height: 500px; /* approximate max height */
+      transition-property: all;
+      transition-duration: .5s;
+      transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
     }
+
+    .slider.closed {
+	max-height: 0;
+}
     </style>
   </head>
   <body>
@@ -140,7 +154,7 @@
     <div>
       <div id="content-out" class="displayOn">
           <div style="width:100%; z-index:1000; top:0; position:fixed; background-color:#fff; text-align:center;">
-              <div style="padding:2%;">
+              <div style="padding:2%; height:40px;">
                 WHAT'S HAPPENING <i class="glyphicon glyphicon-menu-hamburger" style="margin-left:55%; color:#efefef;"></i>
               </div>
           </div>
@@ -162,9 +176,21 @@
 
     <script type="text/x-handlebars" id="content-out-template">
       <div style="width:100%; z-index:1000; top:0; position:fixed; background-color:#fff; text-align:center;">
-        <div style="padding:2%;">
-          WHAT'S HAPPENING <i class="glyphicon glyphicon-menu-hamburger" style="margin-left:55%; color:rgb(230, 145, 56);"></i>
+        <div style="padding:2%; height:40px;">
+          WHAT'S HAPPENING <i class="glyphicon glyphicon-menu-hamburger" style="margin-left:55%; color:rgb(230, 145, 56);" onclick="showMenu()"></i>
         </div>
+      </div>
+      <div style="width:100%; z-index:990; top:40; background-color:#efefef; display: none; position:fixed; padding:8px;" id="subnav">
+          <ul class='submenu'>
+            <li onclick="filterBy('103')">Music</li>
+            <li onclick="filterBy('101')">Business</li>
+            <li onclick="filterBy('110')">Food & Drink</li>
+            <li onclick="filterBy('105')">Arts</li>
+            <li onclick="filterBy('104')">Film & Media</li>
+            <li onclick="filterBy('108')">Sports & Fitness</li>
+            <li onclick="filterBy('109')">Travel & Outdoor</li>
+            <li onclick="filterBy('118')">Auto, Boat & Air</li>
+          </ul>
       </div>
       
       <div class="container" style="margin-top:48px;">
@@ -219,17 +245,6 @@
     $(document).ready(function(e) { init(); });
 
     init = () => {
-      getData(`${url}/v1/eb/categories`, (success, response) => {
-        if(success){
-          categories = response;
-          loadComplete();
-        } else {
-          alert('error retrieving live data');
-        }
-      })
-    };
-
-    loadComplete = () => {
       getData(`${url}/v1/events/austin`, (success, response) => {
         if(success){
           events = response;
@@ -241,9 +256,9 @@
     }
 
     displayEvents = () => {
-      console.log(categories);
       setContent('content-out-template', { data: events }, 'content-out');
     }
+
     showEvent = (id) => {
       let eventToShow;
       for(let i = 0; i < events.length; i++) {
@@ -274,6 +289,19 @@
 
     external = (target) => {
       window.open(target)
+    }
+
+    showMenu = () => {
+      $("#subnav").slideToggle( "fast", function() {
+        // Animation complete.
+      });
+    }
+
+    filterBy = (id) => {
+      $("#subnav").slideToggle( "fast", function() {
+        // Animation complete.
+      });
+      console.log(id);
     }
 
 </script>
