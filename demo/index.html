@@ -190,6 +190,7 @@
             <li onclick="filterBy('108')">Sports & Fitness</li>
             <li onclick="filterBy('109')">Travel & Outdoor</li>
             <li onclick="filterBy('118')">Auto, Boat & Air</li>
+            <li onclick="filterBy('000')">View All</li>
           </ul>
       </div>
       
@@ -245,7 +246,7 @@
     $(document).ready(function(e) { init(); });
 
     init = () => {
-      getData(`${url}/v1/events/austin`, (success, response) => {
+      getData(`${url}/v1/eb/events/austin`, (success, response) => {
         if(success){
           events = response;
           displayEvents();
@@ -301,7 +302,19 @@
       $("#subnav").slideToggle( "fast", function() {
         // Animation complete.
       });
-      console.log(id);
+      if(id !== '000') {
+        let filtered = [];
+        for(let i =0; i < events.length; i++) {
+          let evt = events[i];
+          
+          if(evt.category_id === id) {
+            filtered.push(evt);
+          }
+        }
+        setContent('content-out-template', { data: filtered }, 'content-out');
+      } else {
+        setContent('content-out-template', { data: events }, 'content-out');
+      }
     }
 
 </script>
